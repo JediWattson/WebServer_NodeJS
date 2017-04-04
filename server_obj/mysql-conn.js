@@ -34,8 +34,8 @@ module.exports = function mysqlconn(t){
 			byRow: function(lower, upper){
 				return this.forge().query.where('row', '>', lower).andWhere('row', '<'. upper).fetch();
 			},
-			addBlog: function(data){
-				return this.forge(date).save()
+			addBlog: function(blog){
+				return this.forge(blog).save()
 			}
 	})}
 	return book
