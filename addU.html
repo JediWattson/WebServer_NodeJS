@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Welcome to Famtrees</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<style>
+	body{
+		background: #086668;
+	}
+	
+	.jumbotron {
+		padding: 20px 40px;
+	}
+	
+	#reg table {
+		cellspacing: 3px;
+	}
+	
+	#reg table td {
+		padding: 10px;
+	}
+	</style>		
+	</head>
+
+	<body>
+    <script>
+		
+        function userInit(){
+            var xhttp = new XMLHttpRequest();
+            var inputHandle = document.getElementById("reg").elements[0].value;
+            var fbID;
+			document.cookie.split(";").forEach(function(sub){if (sub.includes('fbID')){fbID = sub.split('=')[1];}});
+            xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("response").innerHTML = this.responseText;
+				}
+			}
+            xhttp.open("POST", "/addUser", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify({handle : inputHandle, fID : fbID}));            
+        }
+       
+    </script>
+    
+	<div>
+	<nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+		<ul class="nav navbar-nav">		
+		<li class="active"><a href="/">Home<span class="sr-only"></span></a></li>
+		<li class="active"><a href="/addUser">Register<span class="sr-only">(current)</span></a></li>
+		</ul>
+	</nav>
+	</div>
+
+	<br/>
+	
+	<div class="jumbotron"> 
+		 <form onsubmit="return false;" id="reg">
+			<table>
+				<tr>
+					<p>Please Enter a proper handle and password!</p>
+				</tr>
+				<tr>
+					<td>Username:</td>
+					<td><input type='text' name='handle'></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type='text' name='password2'></td>
+				</tr>
+				<tr>
+					<td>Re-enter Password:</td>
+					<td><input type='text' name='password2'></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button onclick="userInit()">Register</button></td>
+				</tr>
+			</table>
+			<p id="response"></p>
+		 </form>    	 
+	</div>
+	</body>
+</html>

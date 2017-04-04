@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta content="This is a website to showcase my abilites with UI design, MySQL and Javascript. I wrote the server in NodeJS and use ORM for MySQL." name="description">
+	
+		<!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		-->
+		
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<meta charset="UTF-8">
+		<title>Welcome to Famtrees</title>
+	<style>
+	body{
+		background: #086668;
+	}
+	
+	.jumbotron {
+		padding: 20px 40px;
+	}
+	
+	#login table {
+		cellspacing: 3px;
+	}
+	
+	#login table td {
+		padding: 10px;
+	}
+	</style>
+	</head>
+
+	<body>
+    <script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '1732848567007047',
+				cookie     : true,
+				xfbml      : true,
+				version    : 'v2.8'
+			});
+			FB.AppEvents.logPageView();
+			checkLoginState();
+		};
+    
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+    
+	    function checkLoginState() {
+			var v;
+			document.cookie.split(";").forEach(function(sub){if (sub.includes('visit')){v = sub.split('=')[1];}});
+			if (v == undefined){
+				document.cookie = "visit=" + "true" + "; path=/"; 
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("POST", "/ipLog", true);
+				xhttp.send();			
+			}
+			FB.getLoginStatus(function(response) {
+				if(response.status == "connected"){
+					var fID = response.authResponse.userID;
+					document.cookie = "fbID=" + fID + "; path=/";
+					var xhttp = new XMLHttpRequest();
+					xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							if (this.responseText == "addFBUser")
+								window.location.assign(window.location.href + this.responseText);
+							else
+								document.getElementById("response").innerHTML = this.responseText;
+						}
+					}
+					xhttp.open("POST", "/fbLogin", true);
+					xhttp.setRequestHeader("Content-type", "application/json");
+					xhttp.send(JSON.stringify({fbID : fID}));
+			  }});	
+        }
+        
+        function logIn(){
+            var xhttp = new XMLHttpRequest();
+            var inputHandle = document.getElementById("login").elements[0].value;
+            xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("response").innerHTML = this.responseText;
+				}
+			}
+            xhttp.open("POST", "/login", true);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send(JSON.stringify({handle : inputHandle}));
+        }
+    </script>
+    
+	<div>
+	<nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+		<ul class="nav navbar-nav">
+		<li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+		<li class="active"><a href="/addUser">Register<span class="sr-only"></span></a></li></ul>
+	</nav>
+	</div>
+
+	<br/>
+
+	<div class="jumbotron"> 
+		 <form onsubmit="return false;" id="login">
+			<table>
+			    <tr>
+					<div class="fb-login-button" data-max-rows="1" data-size="icon" data-show-faces="true" data-auto-logout-link="true" onlogin="checkLoginState();"></div>
+				</tr>
+				<tr>
+					<p>Log in with Facebook, a username and password, or register!</p>
+				</tr>
+				<tr>
+					<td>Username:</td>
+					<td><input type='text' name='handle'></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type='text' name='password'></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button onclick="logIn()">Log In</button></td>
+				</tr>
+			</table>
+			<p id="response"></p>
+		 </form>    	 
+	</div>
+
+	</body>
+</html>
