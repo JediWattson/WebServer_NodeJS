@@ -69,7 +69,6 @@
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
 							var jsonRes = JSON.parse(this.responseText);
-							console.log(jsonRes);
 							document.cookie = "handle=" + jsonRes.handle + "; path=/";
 							window.location.assign(window.location.href + jsonRes.g);
 						}
@@ -85,8 +84,10 @@
             var inputHandle = document.getElementById("login").elements[0].value;
             xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					if (this.responseText == "blog")
+					if (this.responseText == "blog"){
+						document.cookie = "handle=" + inputHandle + "; path=/";
 						window.location.assign(window.location.href + this.responseText);
+					}
 					else
 						document.getElementById("response").innerHTML = this.responseText;
 				}
@@ -104,7 +105,6 @@
 		<li class="active"><a href="/addUser">Register<span class="sr-only"></span></a></li>
 		<li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
 		</ul>
-
 	</nav>
 	</div>
 
