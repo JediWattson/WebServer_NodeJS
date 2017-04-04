@@ -39,6 +39,7 @@ app.post('/fbLogin', (req, res) => {
 				res.send("addFBUser")
 			}
 			else{
+				console.log("oiajsdoiajsdoij")
 				res.send("blog")
 			}
 		}).catch((err) => {throw err})
