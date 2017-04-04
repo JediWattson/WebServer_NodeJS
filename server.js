@@ -103,7 +103,9 @@ app.get('/addUser', (req, res) => {
     res.sendFile(path.join(__dirname + '/addU.html'))
 })
 
-app.post('/blog', (req, res)=> {
+
+
+app.get('/blog', (req, res)=> {
 	res.sendFile(path.join(__dirname + '/blog.html'))	
 })
 
