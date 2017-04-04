@@ -75,7 +75,7 @@
 						}
 					}
 					xhttp.open("POST", "/fbLogin", true);
-					//xhttp.setRequestHeader("Content-type", "application/json");
+					xhttp.setRequestHeader("Content-type", "application/json");
 					xhttp.send(JSON.stringify({fbID : fID}));
 			  }});	
         }
