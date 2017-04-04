@@ -39,7 +39,7 @@
 					document.getElementById("response").innerHTML = this.responseText;
 				}
 			}
-            xhttp.open("POST", "/addUser", true);
+            xhttp.open("POST", "/addBlog", true);
             xhttp.setRequestHeader("Content-type", "application/json");
             xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : message}));            
         }
