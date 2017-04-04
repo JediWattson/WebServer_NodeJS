@@ -31,8 +31,12 @@ app.get('/', (req, res) => {
  	res.sendFile(path.join(__dirname + '/index.html'))
 })
 
+app.post('/ipLog', (req, res) =>{
+    console.log(Date()+" connected: " + req.connection.remoteAddress.split(':')[3])
+})
+
 app.post('/fbLogin', (req, res) => {
-    var uID = req.body.fID
+    var uID = req.body.fbID
     if (uID != undefined){
 		blogU.byFID(uID).then((result) => {
 			console.log(result)
@@ -44,10 +48,6 @@ app.post('/fbLogin', (req, res) => {
 			}
 		}).catch((err) => {throw err})
     }
-})
-
-app.post('/ipLog', (req, res) =>{
-    console.log(Date()+" connected: " + req.connection.remoteAddress.split(':')[3])
 })
 
 app.post('/login', (req, res) => {
@@ -67,7 +67,7 @@ app.post('/login', (req, res) => {
 })
 
 app.post('/addFBUser', (req, res) => {
-	var insert = {handle : req.body.handle, fbid : req.body.fID}
+	var insert = {handle : req.body.handle, fbid : req.body.fbID}
 	if(req.body.handle != ""){
 		blogU.byHandle(insert.handle).then((result) => {
 		    if (result == undefined){
