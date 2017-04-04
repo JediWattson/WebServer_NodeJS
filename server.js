@@ -58,7 +58,7 @@ app.post('/login', (req, res) => {
 		}
 		else{
  			//TODO: add login confirmation
-			console.log(result)
+			console.log(result.ModelBase.attributes.init)
 			res.send("logged in!")
 		}
         }).catch((err) => {throw err})
