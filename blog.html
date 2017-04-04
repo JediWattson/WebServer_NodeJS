@@ -13,24 +13,27 @@
 		padding: 20px 40px;
 	}
 	
-	#reg table {
+	#txt table {
 		cellspacing: 3px;
 	}
 	
-	#reg table td {
+	#txt table td {
 		padding: 10px;
 	}
 	</style>		
 	</head>
 
-	<body>
+	<body onload="init()">
     <script>
-		
+        var inputHandle = "hello world";
+
+		function init(){
+			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
+			document.getElementById("welcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
+		}
         function blogData(){
             var xhttp = new XMLHttpRequest();
-            var inputHandle = document.getElementById("txt").elements[0].value;
-            var handle;
-			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){handle = sub.split('=')[1];}});
+            var message = document.getElementById("txt").elements[0].value;
             xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					document.getElementById("response").innerHTML = this.responseText;
@@ -38,7 +41,7 @@
 			}
             xhttp.open("POST", "/addUser", true);
             xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : text}));            
+            xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : message}));            
         }
        
     </script>
@@ -60,10 +63,10 @@
 		 <form onsubmit="return false;" id="txt">
 			<table>
 				<tr>
-					<p>Write something here:</p>
+					<td><p id="welcome"></p></td>				
 				</tr>
 				<tr>
-					<td><input type='text' name='handle'></td>
+					<td><textarea rows="7" cols="77"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2"><button onclick="blogData()">Add Blog</button></td>

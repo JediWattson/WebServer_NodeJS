@@ -24,6 +24,7 @@ var credentials = tls.createSecureContext(options);
 /*=============web(http)==============*/
 
 var blogU = userTable('userBlog')
+var blogMess = blogTable('blog')
 var app = express()
 app.use(bodyParser.json())
 app.use('/scripts',  express.static(__dirname))
@@ -109,8 +110,9 @@ app.get('/blog', (req, res)=> {
 
 app.post('/addBlog', (req, res)=>{
 	var blog = {handle: req.body.handle, txtBlock: req.body.blog}
-	
-	
+	blogMess.addBlog(data).then((u) =>{
+		res.send("Great, have a good day!")
+	}.catch((err)=>{throw err})
 })
 
 app.listen(80)
