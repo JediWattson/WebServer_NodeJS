@@ -23,7 +23,7 @@ var credentials = tls.createSecureContext(options);
 
 /*=============web(http)==============*/
 
-var luser = userTable('userBlog')
+var blogU = userTable('userBlog')
 var app = express()
 app.use(bodyParser.json())
 app.use('/scripts',  express.static(__dirname))
@@ -32,14 +32,14 @@ app.get('/', (req, res) => {
 })
 
 app.post('/fbLogin', (req, res) => {
-    var uID = req.body.fbID
+    var uID = req.body.fID
     if (uID != undefined){
-		luser.byFID(uID).then((result) => {
+		blogU.byFID(uID).then((result) => {
 			if (result == undefined){
 				res.send("addFBUser")
 			}
 			else{
-				res.send("logged in!")
+				res.send("blog")
 			}
 		}).catch((err) => {throw err})
     }
@@ -52,14 +52,13 @@ app.post('/ipLog', (req, res) =>{
 app.post('/login', (req, res) => {
     var h = req.body.handle
     if (h != undefined){
-	luser.byHandle(h).then((result) => {
+	blogU.byHandle(h).then((result) => {
         if (result == undefined){
 			res.send("Handle/Password combonation does not work!")
 		}
 		else{
- 			//TODO: add login confirmation
-			console.log(result.attributes.init)
-			res.send("logged in!")
+			//console.log(result.attributes.init)			
+			res.send("blog")
 		}
         }).catch((err) => {throw err})
     }
@@ -69,9 +68,9 @@ app.post('/login', (req, res) => {
 app.post('/addFBUser', (req, res) => {
 	var insert = {handle : req.body.handle, fbid : req.body.fID}
 	if(req.body.handle != ""){
-		luser.byHandle(insert.handle).then((result) => {
+		blogU.byHandle(insert.handle).then((result) => {
 		    if (result == undefined){
-				luser.initUser(insert).then((u) =>{
+				blogU.initUser(insert).then((u) =>{
 					//TODO add a success page and logic
 					res.send("Success!")
 				}).catch((err) => {throw err})
@@ -86,11 +85,11 @@ app.get('/addFBUser', (req, res) => {
 })
 
 app.post('/addUser', (req, res) => {
-	var insert = {handle : req.body.handle, fbid : req.body.fID}
+	var insert = {handle : req.body.handle}
 	if(req.body.handle != ""){
-		luser.byHandle(insert.handle).then((result) => {
+		blogU.byHandle(insert.handle).then((result) => {
 		    if (result == undefined){
-				luser.initUser(insert).then((u) =>{
+				blogU.initUser(insert).then((u) =>{
 					//TODO add a success page and logic
 					res.send("Success!")
 				}).catch((err) => {throw err})
@@ -102,6 +101,16 @@ app.post('/addUser', (req, res) => {
 
 app.get('/addUser', (req, res) => {	
     res.sendFile(path.join(__dirname + '/addU.html'))
+})
+
+app.post('/blog', (req, res)=> {
+	res.sendFile(path.join(__dirname + '/blog.html'))	
+})
+
+app.post('/addBlog', (req, res)=>{
+	var blog = {handle: req.body.handle, txtBlock: req.body.blog}
+	
+	
 })
 
 app.listen(80)
