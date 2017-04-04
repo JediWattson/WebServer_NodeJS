@@ -44,7 +44,7 @@ app.post('/fbLogin', (req, res) => {
 				res.send(JSON.stringify({g : "addFBUser"}))
 			}
 			else{
-				res.send(JSON.stringify({g : "blog", handle: result.attributes.handle}))
+				res.send({g : "blog", handle: result.attributes.handle})
 			}
 		}).catch((err) => {throw err})
     }
