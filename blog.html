@@ -26,11 +26,11 @@
 	<body>
     <script>
 		
-        function userInit(){
+        function blogData(){
             var xhttp = new XMLHttpRequest();
-            var inputHandle = document.getElementById("reg").elements[0].value;
-            var fbID;
-			document.cookie.split(";").forEach(function(sub){if (sub.includes('fbID')){fbID = sub.split('=')[1];}});
+            var inputHandle = document.getElementById("txt").elements[0].value;
+            var handle;
+			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){handle = sub.split('=')[1];}});
             xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					document.getElementById("response").innerHTML = this.responseText;
@@ -38,7 +38,7 @@
 			}
             xhttp.open("POST", "/addUser", true);
             xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send(JSON.stringify({handle : inputHandle, fID : fbID}));            
+            xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : text}));            
         }
        
     </script>
@@ -47,7 +47,9 @@
 	<nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
 		<ul class="nav navbar-nav">		
 		<li class="active"><a href="/">Home<span class="sr-only"></span></a></li>
-		<li class="active"><a href="/addUser">Register<span class="sr-only">(current)</span></a></li>
+		<li class="active"><a href="/addUser">Register<span class="sr-only"></span></a></li>
+		<li class="active"><a href="/blog">Blog<span class="sr-only">(current)</span></a></li>
+
 		</ul>
 	</nav>
 	</div>
@@ -55,17 +57,16 @@
 	<br/>
 	
 	<div class="jumbotron"> 
-		 <form onsubmit="return false;" id="reg">
+		 <form onsubmit="return false;" id="txt">
 			<table>
 				<tr>
 					<p>Write something here:</p>
 				</tr>
 				<tr>
-					<td>Username:</td>
 					<td><input type='text' name='handle'></td>
 				</tr>
 				<tr>
-					<td colspan="2"><button onclick="userInit()">Register</button></td>
+					<td colspan="2"><button onclick="blogData()">Add Blog</button></td>
 				</tr>
 			</table>
 			<p id="response"></p>

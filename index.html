@@ -68,8 +68,8 @@
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
-							console.log("hello world" + this.responseText);
-							window.location.assign(window.location.href + this.responseText);
+							document.cookie = "handle=" + this.responseText.handle + "; path=/";
+							window.location.assign(window.location.href + this.responseText.g);
 						}
 					}
 					xhttp.open("POST", "/fbLogin", true);
@@ -100,6 +100,8 @@
 		<ul class="nav navbar-nav">
 		<li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
 		<li class="active"><a href="/addUser">Register<span class="sr-only"></span></a></li></ul>
+		<li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
+
 	</nav>
 	</div>
 

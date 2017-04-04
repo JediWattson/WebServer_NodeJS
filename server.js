@@ -39,12 +39,12 @@ app.post('/fbLogin', (req, res) => {
     var uID = req.body.fbID
     if (uID != undefined){
 		blogU.byFID(uID).then((result) => {
-			console.log(result)
-			if (result == undefined){
-				res.send("addFBUser")
+		res.setHeader('Content-Type', 'application/json')	
+		if (result == undefined){
+				res.send(JSON.stringify({g : "addFBUser"}))
 			}
 			else{
-				res.send("blog")
+				res.send(JSON.stringify({g : "blog", handle: result.handle}))
 			}
 		}).catch((err) => {throw err})
     }
@@ -58,7 +58,6 @@ app.post('/login', (req, res) => {
 			res.send("Handle/Password combonation does not work!")
 		}
 		else{
-			//console.log(result.attributes.init)			
 			res.send("blog")
 		}
         }).catch((err) => {throw err})
@@ -103,8 +102,6 @@ app.post('/addUser', (req, res) => {
 app.get('/addUser', (req, res) => {	
     res.sendFile(path.join(__dirname + '/addU.html'))
 })
-
-
 
 app.get('/blog', (req, res)=> {
 	res.sendFile(path.join(__dirname + '/blog.html'))	
