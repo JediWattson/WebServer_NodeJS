@@ -37,6 +37,6 @@ module.exports = function mysqlconn(t){
 			addBlog: function(data){
 				return this.forge(date).save()
 			}
-	)}}
+	})}
 	return book
 }
