@@ -4,20 +4,21 @@ module.exports = function mysqlconn(t){
 	var book =  require('bookshelf')
 	(require('knex')
 	    ({client: 'mysql', 
-	                  connection:{
-	                      user: 'root',
-	                      database: 'test'
-	    }}))
-    this.connTable = function(t){
+	        connection:{
+				user: 'root',
+				database: 'test'
+			}
+		}))
+    this.userTable = function(t){
       return book.Model.extend({tableName: t}
 	    ,{
-	      byHandle: function(handle){
+	    byHandle: function(handle){
 	        return this.forge().query({where:{handle: handle}}).fetch();
 	    },
-	      byFID: function(fID){
+	    byFID: function(fID){
 	        return this.forge().query({where:{fbid: fID}}).fetch();
 	    },
-	      initUser: function(data){
+		initUser: function(data){
 	        return this.forge(data).save();
 	    }
       })

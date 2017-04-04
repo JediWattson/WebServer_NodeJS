@@ -9,9 +9,6 @@ const
 	tls = require("tls"),
 	https = require("https")
 	
-
-//=============web(http)==============//
-
 /**
 	this is the start of the http angle of the server paragon, it's run with express and uses several post functions to
 	handle user management.
@@ -24,7 +21,9 @@ var credentials = tls.createSecureContext(options);
 
 */
 
-var luser = connTable('laser')
+/*=============web(http)==============*/
+
+var luser = userTable('userBlog')
 var app = express()
 app.use(bodyParser.json())
 app.use('/scripts',  express.static(__dirname))
@@ -45,9 +44,11 @@ app.post('/fbLogin', (req, res) => {
 		}).catch((err) => {throw err})
     }
 })
+
 app.post('/ipLog', (req, res) =>{
-    console.log(Date(-4*60000)+" connected: " + req.connection.remoteAddress.split(':')[3])
+    console.log(Date()+" connected: " + req.connection.remoteAddress.split(':')[3])
 })
+
 app.post('/login', (req, res) => {
     var h = req.body.handle
     if (h != undefined){
@@ -57,6 +58,7 @@ app.post('/login', (req, res) => {
 		}
 		else{
  			//TODO: add login confirmation
+			console.log(result)
 			res.send("logged in!")
 		}
         }).catch((err) => {throw err})
