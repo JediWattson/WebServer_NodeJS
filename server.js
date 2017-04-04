@@ -109,8 +109,8 @@ app.get('/blog', (req, res)=> {
 })
 
 app.post('/addBlog', (req, res)=>{
-	var blog = {handle: req.body.handle, txtBlock: req.body.blog}
-	blogMess.addBlog(data).then((u) =>{
+	var blog = {handle: req.body.handle, txtBlock: req.body.txtBlog}
+	blogMess.addBlog(blog).then((u) =>{
 		res.send("Great, have a good day!")
 	}).catch((err)=>{throw err})
 })
