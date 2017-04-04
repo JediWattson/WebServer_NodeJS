@@ -67,9 +67,8 @@
 					document.cookie = "fbID=" + fID + "; path=/";
 					var xhttp = new XMLHttpRequest();
 					xhttp.onreadystatechange = function() {
-						console.log(this.responseText);
-						console.log("asdasdasd");
 						if (this.readyState == 4 && this.status == 200) {
+							console.log(this.responseText);
 							document.cookie = "handle=" + this.responseText.handle + "; path=/";
 							window.location.assign(window.location.href + this.responseText.g);
 						}

@@ -39,7 +39,7 @@ app.post('/fbLogin', (req, res) => {
     var uID = req.body.fbID
     if (uID != undefined){
 		blogU.byFID(uID).then((result) => {
-		res.setHeader('Content-Type', 'application/json')	
+		res.setHeader.("Content-type", "application/json")
 		if (result == undefined){
 				res.send(JSON.stringify({g : "addFBUser"}))
 			}
