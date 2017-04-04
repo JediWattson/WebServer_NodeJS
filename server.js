@@ -35,11 +35,11 @@ app.post('/fbLogin', (req, res) => {
     var uID = req.body.fID
     if (uID != undefined){
 		blogU.byFID(uID).then((result) => {
+			console.log(result)
 			if (result == undefined){
 				res.send("addFBUser")
 			}
 			else{
-				console.log("oiajsdoiajsdoij")
 				res.send("blog")
 			}
 		}).catch((err) => {throw err})
