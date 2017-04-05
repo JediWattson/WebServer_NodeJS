@@ -13,7 +13,9 @@
 
 		function init(){
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
-			if(inputHandle.length < 1){document.getElementById("welcome").innerHTML = "Hey you gotta log in!"}
+			if(inputHandle.length < 1){document.getElementById("welcome").innerHTML = "Hey you gotta log in!"
+			  return;
+			}
 			document.getElementById("welcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
 		}
         function blogData(){
