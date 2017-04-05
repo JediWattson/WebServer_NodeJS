@@ -1,34 +1,21 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<link rel="stylesheet" href="styles/firstStyle.css">
 		<meta charset="UTF-8">
 		<title>Welcome to Famtrees</title>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<style>
-	body{
-		background: #086668;
-	}
-	
-	.jumbotron {
-		padding: 20px 40px;
-	}
-	
-	#reg table {
-		cellspacing: 3px;
-	}
-	
-	#reg table td {
-		padding: 10px;
-	}
-	</style>		
 	</head>
 
-	<body>
+	<body onload="init()">
     <script>
+		function init(){
+			document.getElementById("welcome").innerHTML = "Please Enter a handle!";
+		}
 		
         function userInit(){
             var xhttp = new XMLHttpRequest();
-            var inputHandle = document.getElementById("reg").elements[0].value;
+            var inputHandle = document.getElementById("input").elements[0].value;
             var fbID;
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('fbID')){fbID = sub.split('=')[1];}});
             xhttp.onreadystatechange = function() {
@@ -49,7 +36,6 @@
 		<li class="active"><a href="/">Home<span class="sr-only"></span></a></li>
 		<li class="active"><a href="/addUser">Register<span class="sr-only">(current)</span></a></li>
 		<li class="active"><a href="/blog">Blog<span class="sr-only"></span></a></li>
-
 		</ul>
 	</nav>
 	</div>
@@ -57,10 +43,10 @@
 	<br/>
 	
 	<div class="jumbotron"> 
-		 <form onsubmit="return false;" id="reg">
+		 <form onsubmit="return false;" id="input">
 			<table>
 				<tr>
-					<p>Please Enter a proper handle!</p>
+					<td colspan="3"><p id="welcome"></p></td>				
 				</tr>
 				<tr>
 					<td>Username:</td>

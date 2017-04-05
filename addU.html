@@ -1,34 +1,22 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<title>Welcome to Famtrees</title>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<style>
-	body{
-		background: #086668;
-	}
-	
-	.jumbotron {
-		padding: 20px 40px;
-	}
-	
-	#reg table {
-		cellspacing: 3px;
-	}
-	
-	#reg table td {
-		padding: 10px;
-	}
-	</style>		
+		<link rel="stylesheet" href="styles/firstStyle.css">
+		<meta charset="UTF-8">
+		<title>Welcome to Famtrees</title>	
 	</head>
 
-	<body>
+
+	<body onload="init()">
     <script>
+		function init(){
+			document.getElementById("welcome").innerHTML = "Please Enter a proper handle and password!";
+		}
 		
         function userInit(){
             var xhttp = new XMLHttpRequest();
-            var inputHandle = document.getElementById("reg").elements[0].value;
+            var inputHandle = document.getElementById("input").elements[0].value;
             var fbID;
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('fbID')){fbID = sub.split('=')[1];}});
             xhttp.onreadystatechange = function() {
@@ -57,10 +45,10 @@
 	<br/>
 	
 	<div class="jumbotron"> 
-		 <form onsubmit="return false;" id="reg">
+		 <form onsubmit="return false;" id="input">
 			<table>
 				<tr>
-					<p>Please Enter a proper handle and password!</p>
+					<td colspan="3"><p id="welcome"></p></td>
 				</tr>
 				<tr>
 					<td>Username:</td>

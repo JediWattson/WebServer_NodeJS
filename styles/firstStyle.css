@@ -1,0 +1,51 @@
+body{
+	background: #418591 !important;
+}
+
+.navbar {
+	padding-left: 223px;	
+}
+
+.jumbotron {
+	padding: 20px 40px;
+	margin: 0 auto;
+	width: 666px;
+}
+
+p#welcome{
+		text-align: center;
+		width: 84%;
+		margin: 0 auto;
+}
+
+#input table {
+	cellspacing: 3px;
+}
+
+#input table td{
+	padding: 10px;
+}
+
+#input table td button {
+	margin-top: 15px;
+	margin-left: 82px;
+}
+
+
+#txt table {
+	margin-left: 40px;
+}
+	
+#txt table td {
+	padding: 10px;
+}
+#txt table td button {
+	margin-left: 22px;
+}
+
+/*
+@media (max-width: 767px) {
+	.jumbotron {
+		width:100%;
+	}
+}*/
