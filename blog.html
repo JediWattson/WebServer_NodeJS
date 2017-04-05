@@ -13,15 +13,20 @@
 
 		function init(){
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
+			if(inputHandle.length < 1){document.getElementById("welcome").innerHTML = "Hey you gotta log in!"}
 			document.getElementById("welcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
 		}
         function blogData(){
             var xhttp = new XMLHttpRequest();
             var message = document.getElementById("txt").elements[0].value;
-			if(message.length < 1){
-				document.getElementById("response").innerHTML = "What's going on? you need to put some text in that box!";
-				return;
-			}
+	    if(message.length < 1){
+		document.getElementById("response").innerHTML = "What's going on? you need to put some text in that box!";
+		return;
+	    }
+	    else if(inputHandle.length < 1){
+	    	document.getElementById("response").innerHTML = "Sign on or register before you add to the blog though!"
+		return;	    
+	    }
             xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					document.getElementById("response").innerHTML = this.responseText;
