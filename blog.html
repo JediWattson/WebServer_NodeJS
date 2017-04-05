@@ -9,7 +9,7 @@
 
 	<body onload="init()">
     <script>
-        var inputHandle = "hello world";
+        var inputHandle;
 
 		function init(){
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
