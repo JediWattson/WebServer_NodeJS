@@ -27,7 +27,7 @@ var blogU = userTable('userBlog')
 var blogMess = blogTable('blog')
 var app = express()
 app.use(bodyParser.json())
-app.use('/scripts',  express.static(__dirname))
+app.use('/styles',  express.static(__dirname))
 app.get('/', (req, res) => {
  	res.sendFile(path.join(__dirname + '/index.html'))
 })
