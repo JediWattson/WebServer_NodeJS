@@ -115,6 +115,11 @@ app.post('/addBlog', (req, res)=>{
 	}).catch((err)=>{throw err})
 })
 
+app.post('/getRows', (req, res)=>{
+	blogMess.getRows(1, 10).then((result)=>{
+		console.log(result)		
+	}).catch((err)=>{throw err})
+})
 app.listen(80)
 
 
