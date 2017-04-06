@@ -116,7 +116,7 @@ app.post('/addBlog', (req, res)=>{
 })
 
 app.get('/getRows', (req, res)=>{
-	blogMess.getRows(1, 10).then((result)=>{
+	blogMess.byRow(1, 10).then((result)=>{
 		console.log(result)		
 	}).catch((err)=>{throw err})
 })
