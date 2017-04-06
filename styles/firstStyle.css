@@ -1,5 +1,6 @@
 body{
 	 background: linear-gradient(to left, #444487, #2e8acc);
+	 background-repeat: no-repeat;
 }
 
 .navbar {
