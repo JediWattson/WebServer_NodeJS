@@ -32,7 +32,7 @@ module.exports = function mysqlconn(t){
 				return this.forge().query({where:{handle: handle}}).fetch();
 			},
 			byRow: function(lower, upper){
-				return this.forge().query.where('row', '>', lower).andWhere('row', '<'. upper).fetch();
+				return this.forge().where('row', '>', lower).andWhere('row', '<'. upper).fetch();
 			},
 			addBlog: function(blog){
 				return this.forge(blog).save()
