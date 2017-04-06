@@ -38,14 +38,15 @@ p#response{
 	padding: 10px;
 }
 .input table td button {
-	box-shadow: 2px 2px 4px #888888;
+	box-shadow: 1px 1px 2px #888888;
 	margin-top: 15px;
-	margin-left: 82px;
+	margin-left: 15%;
 }
-
-.txt table td button {
+.input table td button:hover{
 	box-shadow: 2px 2px 4px #888888;
-	margin-left: 22px;
+}
+.txt table td button {
+	margin-left: 10%;
 }
 
 /*
