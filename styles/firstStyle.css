@@ -10,13 +10,11 @@ body{
 	border-radius: 25px;
 	padding: 20px 40px;
 	margin: 0 auto;
-	width: 666px;
+	width: 527px;
 }
 
 .jumbotron-blog {
-	padding: 20px 40px;
-	margin: 0 auto;
-	width: 737px;
+	width: 664px;
 }
 
 p#welcome{
