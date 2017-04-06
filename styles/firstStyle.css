@@ -1,6 +1,5 @@
 body{
 	 background: linear-gradient(to left, #444487, #2e8acc);
-	 background-repeat: no-repeat;
 }
 
 .navbar {
@@ -25,6 +24,7 @@ p#welcome{
 }
 p#response{
 	text-align: center;
+	margin-top: 4%
 }
 
 .input table {
@@ -47,9 +47,11 @@ p#response{
 	margin-left: 10%;
 }
 
-#blog{
+#b{
+	margin: 8%;
+	width: 84%;
 	height: 220px;
-	width: 563px;
-	
-	
+}
+#bButton{
+	margin-left: 10%;	
 }

@@ -57,14 +57,12 @@
 	<div class="jumbotron jumbotron-blog"> 
 		 <form onsubmit="return false;" id="input" class="input txt">
 			<p id="welcome"></p>
-			<table>
-				<tr>
-					<td><textarea id="blog"></textarea></td>
-				</tr>
-				<tr>
-					<td colspan="2"><button onclick="blogData()">Add Blog</button></td>
-				</tr>
-			</table>
+			<div class="blog">
+				<textarea id="b"></textarea>			
+			</div>
+			<div class="blogButton">
+				<button id="bButton" onclick="blogData()">Add Blog</button>
+			<div>
 			<p id="response"></p>
 		 </form>
 		
