@@ -1,5 +1,6 @@
 body{
 	background: linear-gradient(to left, #444487, #2e8acc);
+	color: #FFFFFF;
 }
 
 .navbar {
@@ -64,7 +65,11 @@ p#bresponse{
 .txt table td button {
 	margin-left: 10%;
 }
-
+#t{
+	color: #ffffff;
+	
+	
+}
 #b{
 	margin: 8%;
 	width: 84%;
