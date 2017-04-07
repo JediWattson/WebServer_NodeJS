@@ -33,7 +33,7 @@ module.exports = function mysqlconn(t){
 			},
 			byRow: function(off){
 				console.log(this.fetchPage)
-				return this.fetchPage({limit: 20, offset: off})
+				return this.fetchPage({limit: 20, offset: off, withRelated:["row"]})
 			},
 			addBlog: function(blog){
 				return this.forge(blog).save()
