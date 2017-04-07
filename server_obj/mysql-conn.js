@@ -10,6 +10,7 @@ module.exports = function mysqlconn(t){
 			}
 		})
 	)
+	book.plugin('bookshelf-page')
 	this.userTable = function(t){
 		return book.Model.extend({tableName: t}
 			,{
@@ -31,8 +32,8 @@ module.exports = function mysqlconn(t){
 			byHandle: function(handle){
 				return this.forge().query({where:{handle: handle}}).fetch();
 			},
-			byRow: function(lower, upper){
-				return this.forge().query().query.where('row', '>', lower).andWhere('row', '<'. upper).fetch()
+			byRow: function(off){
+				return this.fetchPage({limit: 20, offset: off})
 			},
 			addBlog: function(blog){
 				return this.forge(blog).save()
