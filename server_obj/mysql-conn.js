@@ -10,7 +10,7 @@ module.exports = function mysqlconn(t){
 			}
 		})
 	)
-	book.plugin('bookshelf-page')
+	book.plugin('pagination')
 	this.userTable = function(t){
 		return book.Model.extend({tableName: t}
 			,{
@@ -33,7 +33,7 @@ module.exports = function mysqlconn(t){
 				return this.forge().query({where:{handle: handle}}).fetch();
 			},
 			byRow: function(off){
-				return this.fetchPage({limit: 20, offset: off})
+				return this.forge().fetchPage({limit: 20, offset: off})
 			},
 			addBlog: function(blog){
 				return this.forge(blog).save()
