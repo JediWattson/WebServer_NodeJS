@@ -13,20 +13,20 @@
 
 		function init(){
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
-			if(inputHandle == undefined){document.getElementById("welcome").innerHTML = "Hey you gotta log in!"
+			if(inputHandle == undefined){document.getElementById("bwelcome").innerHTML = "Hey you gotta log in!"
 			  return;
 			}
-			document.getElementById("welcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
+			document.getElementById("bwelcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
 		}
         function blogData(){
             var xhttp = new XMLHttpRequest();
             var message = document.getElementById("input").elements[0].value;
 	    if(message.length < 1){
-		document.getElementById("response").innerHTML = "What's going on? you need to put some text in that box!";
+		document.getElementById("bresponse").innerHTML = "What's going on? you need to put some text in that box!";
 		return;
 	    }
 	    else if(inputHandle == undefined){
-	    	document.getElementById("response").innerHTML = "Sign on or register before you add to the blog though!"
+	    	document.getElementById("bresponse").innerHTML = "Sign on or register before you add to the blog though!"
 		return;	    
 	    }
             xhttp.onreadystatechange = function() {
@@ -50,20 +50,17 @@
 		<li class="active"><a href="/blog">Blog<span class="sr-only">(current)</span></a></li>
 		</ul>
 	</nav>
-	</div>
-
-	<br/>
-	
+	</div>	
 	<div class="jumbotron jumbotron-blog"> 
 		 <form onsubmit="return false;" id="input" class="input txt">
-			<p id="welcome"></p>
+			<p id="bwelcome"></p>
 			<div class="blog">
 				<textarea id="b"></textarea>			
 			</div>
 			<div class="blogButton">
 				<button id="bButton" onclick="blogData()">Add Blog</button>
-			<div>
-			<p id="response"></p>
+			</div>
+				<p id="bresponse"></p>
 		 </form>
 		
 		<div
@@ -72,6 +69,35 @@
 		  data-width="450"
 		  data-show-faces="true">
 		</div>
+	</div>
+	<div class="panel panel-primar">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-primary">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
+	</div>	<div class="panel panel-default">
+		<div class="panel-heading">hello world</div>
+		<div class="panel-body">i hope this world</div>
 	</div>
 	</body>
 </html>

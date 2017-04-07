@@ -1,5 +1,5 @@
 body{
-	 background: linear-gradient(to left, #444487, #2e8acc);
+	background: linear-gradient(to left, #444487, #2e8acc);
 }
 
 .navbar {
@@ -8,6 +8,7 @@ body{
 }
 
 .jumbotron {
+	background-color: hsla(328, 37%, 41%, 0.18) !important;
 	box-shadow: 2px 2px 40px #000000;
 	border-radius: 25px;
 	padding: 20px 40px;
@@ -19,14 +20,31 @@ body{
 	width: 664px;
 }
 
+.panel{
+	margin: 0 auto;
+	width: 664px;	
+}
+
 p#welcome{
+	color: #FFFFFF;
 	text-align: center;
 }
 p#response{
+	color: #FFFFFF;
 	text-align: center;
 	margin-top: 4%
 }
-
+p#bwelcome{
+	color: #FFFFFF;
+	font-size: 3.5em;
+	text-align: center;
+}
+p#bresponse{
+	color: #FFFFFF;
+	margin-top: 4%;
+	font-size: 2.8em;
+	text-align: center;
+}
 .input table {
 	cellspacing: 3px;
 	margin-left: 40px;
