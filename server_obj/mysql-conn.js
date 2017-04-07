@@ -24,8 +24,7 @@ module.exports = function mysqlconn(t){
 				return this.forge(data).save();
 			}
 		})
-    }
-	
+    	}	
 	this.blogTable = function(t){
 		return book.Model.extend({tableName: t}
 			,{
@@ -33,7 +32,7 @@ module.exports = function mysqlconn(t){
 				return this.forge().query({where:{handle: handle}}).fetch();
 			},
 			byRow: function(off){
-				return this.forge().groupBy("row").fetchPage({limit: 20, offset: off})
+				return this.forge().query().fetchPage({limit: 20, offset: off})
 			},
 			addBlog: function(blog){
 				return this.forge(blog).save()
