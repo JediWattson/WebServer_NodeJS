@@ -26,7 +26,7 @@ module.exports = function mysqlconn(t){
 		})
     	}	
 	this.blogTable = function(t){
-		return book.Model.extend({tableName: t}
+		return book.Model.extend({tableName: t, idAttribute: "row"}
 			,{
 			byHandle: function(handle){
 				return this.forge().query({where:{handle: handle}}).fetch();
