@@ -1,6 +1,6 @@
 body{
 	background: linear-gradient(to left, #444487, #2e8acc);
-	color: #FFFFFF;
+	color: #ffffff !important;
 }
 
 .navbar {
@@ -25,27 +25,6 @@ body{
 	margin: 0 auto;
 	width: 664px;	
 }
-
-p#welcome{
-	color: #FFFFFF;
-	text-align: center;
-}
-p#response{
-	color: #FFFFFF;
-	text-align: center;
-	margin-top: 4%
-}
-p#bwelcome{
-	color: #FFFFFF;
-	font-size: 3.5em;
-	text-align: center;
-}
-p#bresponse{
-	color: #FFFFFF;
-	margin-top: 4%;
-	font-size: 2.8em;
-	text-align: center;
-}
 .input table {
 	cellspacing: 3px;
 	margin-left: 40px;
@@ -65,11 +44,24 @@ p#bresponse{
 .txt table td button {
 	margin-left: 10%;
 }
-#t{
-	color: #ffffff;
-	
-	
+
+p#welcome{
+	text-align: center;
 }
+p#response{
+	text-align: center;
+	margin-top: 4%
+}
+p#bwelcome{
+	font-size: 3em;
+	text-align: center;
+}
+p#bresponse{
+	margin-top: 4%;
+	font-size: 2.2em;
+	text-align: center;
+}
+
 #b{
 	margin: 8%;
 	width: 84%;
