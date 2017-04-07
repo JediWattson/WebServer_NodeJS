@@ -53,6 +53,8 @@ p#response{
 	margin-top: 4%
 }
 p#bwelcome{
+	margin-left: 10px;
+	margin-right: 10px;
 	font-size: 3em;
 	text-align: center;
 }
