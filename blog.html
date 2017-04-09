@@ -21,7 +21,7 @@
 			}
             xhttp.open("GET", "/getRows", true);
             xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : message}));     
+            xhttp.send();
 
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
 			if(inputHandle == undefined){document.getElementById("bwelcome").innerHTML = "Hey you gotta log in!"
