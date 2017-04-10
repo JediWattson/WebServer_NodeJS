@@ -35,15 +35,18 @@
 		}
 
 		function loadComment(ht, i){
+		 	console.log(ht);
 			var outPan = document.createElement("div");
 			outPan.className= "panel panel-primary";
 			outPan.id = "comment" + i;
 			document.body.appendChild(outPan);
 			outPan = document.getElementById("comment" + i);
-			var panH = document.createElement("div")
+			var panH = document.createElement("div");
 			panH.className = "panel-heading";
-			var panB = document.createElement("div")
+
+			var panB = document.createElement("div");
 			panB.className = "panel-body";
+			//panH.innerHTML = ht.
 			outPan.appendChild(panH);
 			outPan.appendChild(panB);
 		}
