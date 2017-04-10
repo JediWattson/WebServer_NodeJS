@@ -16,8 +16,10 @@
             xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					var jsonRes = JSON.parse(this.responseText);
+					var i = 0;
 					jsonRes.forEach(function(obj){
-						loadComment(obj);
+						i += 1;
+						loadComment(obj, i);
 					})
 				}
 			}
@@ -32,10 +34,10 @@
 			document.getElementById("bwelcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
 		}
 
-		function loadComment(ht){
+		function loadComment(ht, i){
 			var outPan = document.createElement("div");
 			outPan.className= "panel panel-primary";
-			outPan.id = "comment";
+			outPan.id = "comment" + i;
 			document.body.appendChild(outPan);
 			outPan = document.getElementById("comment");
 			var panH = document.createElement("div")
