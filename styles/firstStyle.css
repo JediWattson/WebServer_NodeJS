@@ -21,10 +21,12 @@ body{
 	width: 664px;
 }
 
-.panel{
+.panel-body{
 	margin: 0 auto;
-	width: 664px;	
+	width: 664px;
+	color: black;
 }
+
 .input table {
 	cellspacing: 3px;
 	margin-left: 40px;
