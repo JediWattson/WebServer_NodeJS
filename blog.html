@@ -43,10 +43,10 @@
 			outPan = document.getElementById("comment" + i);
 			var panH = document.createElement("div");
 			panH.className = "panel-heading";
-
+			panH.innerHTML = ht.handle;
 			var panB = document.createElement("div");
 			panB.className = "panel-body";
-			//panH.innerHTML = ht.
+			panB.innerHTML = ht.txtBlock;
 			outPan.appendChild(panH);
 			outPan.appendChild(panB);
 		}
