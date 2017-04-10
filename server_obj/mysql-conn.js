@@ -23,15 +23,14 @@ module.exports = function mysqlconn(t){
 			initUser: function(data){
 				return this.forge(data).save();
 			}
-		})
-    	}	
+		})}	
 	this.blogTable = function(t){
 		return book.Model.extend({tableName: t, idAttribute: "row"}
 			,{
 			byHandle: function(handle){
 				return this.forge().query({where:{handle: handle}}).fetch();
 			},
-			byRow: function(off){
+			getRows: function(){
 				return this.fetchPage({usingPageSize: true})
 			},
 			addBlog: function(blog){

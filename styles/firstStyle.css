@@ -1,5 +1,5 @@
 body{
-	background: linear-gradient(to left, #444487, #2e8acc);
+	background: linear-gradient(to left, #444487, #2e8acc, #1c345b);
 	color: #ffffff !important;
 }
 
@@ -23,8 +23,11 @@ body{
 
 .panel{
 	margin: 0 auto;
-	width: 664px;	
+	width: 664px;
+	box-shadow: 2px 2px 40px #000000;
+	color: black;
 }
+
 .input table {
 	cellspacing: 3px;
 	margin-left: 40px;
@@ -69,6 +72,7 @@ p#bresponse{
 #b{
 	margin: 8%;
 	width: 84%;
+	color: black;
 	height: 220px;
 }
 #bButton{
