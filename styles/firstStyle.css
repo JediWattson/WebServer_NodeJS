@@ -63,7 +63,9 @@ p#bresponse{
 	font-size: 2.2em;
 	text-align: center;
 }
-
+#inp{
+	color: black;	
+}
 #b{
 	margin: 8%;
 	width: 84%;

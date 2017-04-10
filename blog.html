@@ -12,34 +12,38 @@
         var inputHandle;
 
 		function init(){
+		
 			document.cookie.split(";").forEach(function(sub){if (sub.includes('handle')){inputHandle = sub.split('=')[1];}});
+			var comment = document.createElement("DIV").className = "panel panel-default";
+			comment.innerHTML="<div class=\"pannel-heading\"> hello world</div> <div class=\"pannel-body\"> hello world</div>" 
+			console.log(comment);
+			document.body.appendChild(comment)
 			if(inputHandle == undefined){document.getElementById("bwelcome").innerHTML = "Hey you gotta log in!"
 			  return;
 			}
 			document.getElementById("bwelcome").innerHTML = "Hey " + inputHandle + " why don't you write on my webwall, thank you!!!";
 		}
+		
         function blogData(){
             var xhttp = new XMLHttpRequest();
             var message = document.getElementById("input").elements[0].value;
-	    if(message.length < 1){
-		document.getElementById("bresponse").innerHTML = "What's going on? you need to put some text in that box!";
-		return;
-	    }
-	    else if(inputHandle == undefined){
-	    	document.getElementById("bresponse").innerHTML = "Sign on or register before you add to the blog though!"
-		return;	    
-	    }
-            xhttp.onreadystatechange = function() {
+			if(message.length < 1){
+				document.getElementById("bresponse").innerHTML = "What's going on? you need to put some text in that box!";
+				return;
+			}else if(inputHandle == undefined){
+				document.getElementById("bresponse").innerHTML = "Sign on or register before you add to the blog though!"
+				return;	    
+			}
+			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					document.getElementById("response").innerHTML = this.responseText;
 					document.getElementById("input").elements[0].value = '';
 				}
 			}
-            xhttp.open("POST", "/addBlog", true);
-            xhttp.setRequestHeader("Content-type", "application/json");
-            xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : message}));            
+			xhttp.open("POST", "/addBlog", true);
+			xhttp.setRequestHeader("Content-type", "application/json");
+			xhttp.send(JSON.stringify({handle : inputHandle, txtBlog : message}));            
         }
-       
     </script>
     
 	<div>
@@ -51,6 +55,7 @@
 		</ul>
 	</nav>
 	</div>	
+	
 	<div class="jumbotron jumbotron-blog"> 
 		 <form onsubmit="return false;" id="input" class="input txt">
 			<p id="bwelcome"></p>
@@ -61,8 +66,7 @@
 				<button id="bButton" onclick="blogData()" class="btn btn-warning">Add Blog</button>
 			</div>
 			<p id="bresponse"></p>
-		 </form>
-		
+		 </form>		
 		<div
 		  class="fb-like"
 		  data-share="true"
