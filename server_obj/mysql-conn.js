@@ -31,7 +31,7 @@ module.exports = function mysqlconn(t){
 				return this.forge().query({where:{handle: handle}}).fetch();
 			},
 			getRows: function(){
-				this.query(function(q){console.log(q)})
+				console.log(this.fetchPage())
 				return this.fetchPage({usingPageSize: true})
 			},
 			addBlog: function(blog){
