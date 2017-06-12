@@ -32,6 +32,10 @@ app.get('/', (req, res) => {
  	res.sendFile(path.join(__dirname + '/index.html'))
 })
 
+app.get('/dump', (req, res) => {
+	console.log(req, res);
+})
+
 app.post('/ipLog', (req, res) =>{
     console.log(Date()+" connected: " + req.connection.remoteAddress.split(':')[3])
 })
